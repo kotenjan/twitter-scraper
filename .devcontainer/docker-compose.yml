@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  tweet:
+    build:
+      context: ..
+      dockerfile: .devcontainer/tweet/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ..:/workspace:cached
+    network_mode: service:db
+    container_name: tweet
+    #command: sleep infinity
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+    container_name: database
+
+volumes:
+  postgres-data: null
