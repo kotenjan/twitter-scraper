@@ -1,5 +1,5 @@
-basically a fork of scweet - https://github.com/Altimis/Scweet
+Downloads tweets including specified hashtag.
 
-Downloads tweets including specified hashtag
+Uses Selenium instead of requests API to not get detected as a scraping bot by Twitter.
 
 run with: docker-compose -f .devcontainer/docker-compose.yml up
